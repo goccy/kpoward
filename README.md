@@ -1,6 +1,6 @@
 # kpoward
 
-![Go](https://github.com/goccy/kpoward/workflows/Go/badge.svg)
+![Go](https://github.com/goccy/kpoward/actions/workflows/test.yaml/badge.svg)
 [![GoDoc](https://godoc.org/github.com/goccy/kpoward?status.svg)](https://pkg.go.dev/github.com/goccy/kpoward?tab=doc)
 
 **K**ubernetes **P**ort F**oward**ing utility library in Go
