@@ -7,6 +7,10 @@
 
 If you specify the name and port number of the pod on which the server is running, port forwarding will be performed using a free port in your local system.
 
+# Motivation
+
+When developing tools and tests, we may want to make a request from local to a server running on our kubernetes cluster. Normally, we would use `kubectl port-foward <pod name> <local port>:<remote port>` to bind a remote port to a local port and send a request to that port, but we may want to automate this set of tasks. Therefore, we made a library so that this work can be done in the Go lauguage.
+
 # Install
 
 ```console
