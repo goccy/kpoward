@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@v2
       - name: setup kind
         run: |
-          make create/cluster
+          make cluster/create
           make deploy
       - name: wait for available
         run: |
