@@ -15,6 +15,7 @@ import (
 	"k8s.io/client-go/transport/spdy"
 )
 
+// Kpoward.
 type Kpoward struct {
 	cfg        *rest.Config
 	namespace  string
@@ -25,22 +26,27 @@ type Kpoward struct {
 	stderr     io.Writer
 }
 
+// SetNamespace changes target namespace from default.
 func (k *Kpoward) SetNamespace(ns string) {
 	k.namespace = ns
 }
 
+// SetLocalPort specify fixed local port.
 func (k *Kpoward) SetLocalPort(port uint16) {
 	k.localPort = port
 }
 
-func (k *Kpoward) Stdout(stdout io.Writer) {
+// SetStdout changes output destination for stdout.
+func (k *Kpoward) SetStdout(stdout io.Writer) {
 	k.stdout = stdout
 }
 
-func (k *Kpoward) Stderr(stderr io.Writer) {
+// SetStderr changes output destination for stderr.
+func (k *Kpoward) SetStderr(stderr io.Writer) {
 	k.stderr = stderr
 }
 
+// New create Kpoward instance.
 func New(cfg *rest.Config, podName string, remotePort uint16) *Kpoward {
 	return &Kpoward{
 		cfg:        cfg,
@@ -52,6 +58,9 @@ func New(cfg *rest.Config, podName string, remotePort uint16) *Kpoward {
 	}
 }
 
+// Run will call back the local bound free port.
+// You can send any request to this port in the callback.
+// Upon exiting the callback, port forwarding will automatically end and the port will be released.
 func (k *Kpoward) Run(ctx context.Context, cb func(ctx context.Context, localPort uint16) error) error {
 	clientset, err := kubernetes.NewForConfig(k.cfg)
 	if err != nil {
