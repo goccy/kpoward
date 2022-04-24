@@ -3,7 +3,7 @@
 ![Go](https://github.com/goccy/kpoward/actions/workflows/test.yaml/badge.svg)
 [![GoDoc](https://godoc.org/github.com/goccy/kpoward?status.svg)](https://pkg.go.dev/github.com/goccy/kpoward?tab=doc)
 
-**K**ubernetes **P**ort F**oward**ing utility library in Go
+**K**ubernetes **Po**rt F**oward**ing utility library for Go
 
 If you specify the name and port number of the pod on which the server is running, port forwarding will be performed using a free port in your local system.
 
